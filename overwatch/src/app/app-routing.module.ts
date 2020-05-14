@@ -9,19 +9,15 @@ import {  ProfileComponent } from './components/profile/profile.component'
 import { HomeComponent } from './components/home/home.component';
 import {SearchculpritComponent } from './components/searchculprit/searchculprit.component'
 
-
-
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path :'home', component:HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'fileupload', component:UploadimagesComponent},
+  { path: 'search', component:SearchculpritComponent },
   { path: 'gallery',component:GalleryComponent },
   { path :'profile',component:ProfileComponent },
-  { path :'home', component:HomeComponent},
-  { path: 'search', component:SearchculpritComponent }
-  
   
 ];
 

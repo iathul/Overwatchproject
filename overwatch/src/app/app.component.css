@@ -27,6 +27,12 @@
     color: #F8B92A;;
 }
 
+.dropdown-menu{
+    width: 10px;
+}
+
 .dropdown-menu .nav-link{
     color: #000;
+    padding: 10px;
+    
 }

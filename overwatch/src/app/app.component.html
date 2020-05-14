@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link"  routerLink="/fileupload" routerLinkActive="active"> Upload Images </a>
+          <a class="nav-link" *ngIf ="auth.loggedIn()"  routerLink="/fileupload" routerLinkActive="active"> Upload Images </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link"  routerLink="/gallery" routerLinkActive="active" > Gallery </a>
+          <a class="nav-link"  *ngIf ="auth.loggedIn()" routerLink="/gallery" routerLinkActive="active" > Gallery </a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -48,9 +48,7 @@ validateMsg = {
 }
 
 
-  
-  
-  registerUser(form){
+registerUser(form){
     this.auth.registerUser(form.value)
     .subscribe(res=>{
       console.log(res),
@@ -61,7 +59,7 @@ validateMsg = {
     )
     console.log(form.value)
 
-  }
+}
 
 
 
