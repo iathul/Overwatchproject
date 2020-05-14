@@ -19,7 +19,7 @@ import { SearchculpritComponent } from './searchculprit/searchculprit.component'
     ProfileComponent, 
     HomeComponent, SearchculpritComponent, 
   ],
-  imports: [ CommonModule, MaterialModule,FormsModule,ReactiveFormsModule,],
+  imports: [ CommonModule,MaterialModule, FormsModule,ReactiveFormsModule,],
   
   
 })

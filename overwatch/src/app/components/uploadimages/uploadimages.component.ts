@@ -12,6 +12,7 @@ export class UploadimagesComponent implements OnInit {
   selectedFile = []
   public name ="" 
   public crimeNumber =""
+  message:any
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
@@ -19,9 +20,6 @@ export class UploadimagesComponent implements OnInit {
     document.body.classList.add('bg-img');
 
   }
-
-
-  
 
   onFileChange(event){
     for(var i = 0;i<event.target.files.length;i++){
@@ -38,7 +36,8 @@ export class UploadimagesComponent implements OnInit {
       fd.append('image',this.selectedFile[i])
     }
     this.http.post('http://localhost:3000/api/create/5ebc1838c809ec29ea9b7110',fd).subscribe(res=>{
-      console.log(res)
+      this.message = res
+    
     })
     console.log(fd)        
   }

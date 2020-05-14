@@ -19,6 +19,8 @@ export class AuthService {
     return this.http.post<any>(`${this.serverAdd}/login`, user);
   }
 
+  
+
   getToken(){
     return localStorage.getItem('token');
   }
@@ -32,6 +34,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+ 
   
 
 }
