@@ -30,7 +30,10 @@ exports.register  = async (req,res)=> {
                 error:"User not saved"
             })
         }else{
-            res.send(user);
+            
+            const token = jwt.sign({ _id: user._id },process.env.TOKEN_SECRET);
+            const {_id,name,email} = user;
+            return res.json({token,user:{_id,name,email,}}); 
         } 
        
     })
@@ -55,6 +58,7 @@ exports.login =  async (req,res)=> {
             error:"Email and Password do not match"
         })
     }
+
     const token = jwt.sign({ _id: user._id },process.env.TOKEN_SECRET);
     const {_id,name,email} = user;
     return res.json({token,user:{_id,name,email,}});  
