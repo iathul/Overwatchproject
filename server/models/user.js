@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    designation:{
+        type:String
+    },
     email:{
         type:String,
         required:true
@@ -18,6 +21,12 @@ const userSchema = new mongoose.Schema({
         max:1024
     },
     salt:String,
+    station:{
+        type:String
+    },
+    district:{
+        type:String
+    }
     
 })
 
