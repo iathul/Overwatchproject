@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="gallery" *ngFor="let data of imageData" >
+    <div class="row">
+      <div class="col-sm">
+        <div class="card text-center">
+            <div class="card-body">
+                <img src="{{data.front}}" class="card-img-top">
+            </div> 
+            <div class="card-footer text-muted">
+             {{data.name}} front
+            </div>
+         </div>
+      </div>
+      <div class="col-sm">
+        <div class="card text-center">
+            <div class="card-body">
+                <img src="{{data.right}}" class="card-img-top">
+            </div> 
+            <div class="card-footer text-muted">
+             {{data.name}} right
+            </div>
+         </div>
+      </div>
+      <div class="col-sm">
+        <div class="card text-center">
+            <div class="card-body">
+                <img src="{{data.left}}" class="card-img-top">
+            </div> 
+            <div class="card-footer text-muted">
+             {{data.name}} left
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>

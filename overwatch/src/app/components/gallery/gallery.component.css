@@ -1,0 +1,22 @@
+.container{
+    padding-top: 70px;
+    
+}
+.gallery{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.card-title{
+    color: black;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+}
+
+.card-img-top{
+    height: 200px;
+    width: 200px;
+}

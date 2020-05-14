@@ -1,0 +1,89 @@
+
+
+.bg-img{
+    background-image: url('../../../assets/images/bg2.jpg');
+    background-color: #1d539f;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+
+
+.container{
+    height: 100%;
+    align-content: center;
+    padding-top: 110px;
+}
+
+.login-card{
+    height: auto;
+    padding-bottom: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.login-card mat-card-title{
+    color: white;
+}
+
+.input-group {
+    padding:5px;
+    
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+        
+}
+
+.form-group{
+    padding-right: 2px;
+    padding-top: 5px;
+}
+
+.login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+    
+}
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.login-card mat-card-footer button{
+    color: black;
+    background-color: #FFC312;
+    border-radius: 2px;
+    border: none;
+}
+
+.login-card mat-card-footer{
+    color: white;
+    margin-top:75px
+}
+
+.error-message{
+    color: red;
+}
+
+
+
+  

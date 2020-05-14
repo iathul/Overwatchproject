@@ -1,0 +1,61 @@
+<div class="bg-img">
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <mat-card class="login-card">
+            <mat-card-header>
+                <mat-card-title> Login </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form  #form="ngForm" [formGroup]="validate" (ngSubmit)="loginUser(form)">
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-at"></i></span>
+                    </div>
+                    <input type="text" formControlName="email" class="form-control" placeholder="Email" name="email">
+                  </div>
+
+                  <div class="inupt-validation">
+                    <ng-container *ngFor="let validation of validateMsg.email">
+                      <div class="error-message" *ngIf="validate.get('email').hasError(validation.type) && (validate.get('email').dirty || validate.get('email').touched)">
+                        <i class="fas fa-exclamation"></i> {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
+                  
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" formControlName="password" class="form-control" name="password" placeholder="password">
+                  </div>
+
+                  <div class="inupt-validation">
+                    <ng-container *ngFor="let validation of validateMsg.password">
+                      <div class="error-message" *ngIf="validate.get('password').hasError(validation.type) && 
+                        (validate.get('password').dirty || validate.get('password').touched)">
+                        <i class="fas fa-exclamation"></i> {{ validation.message }}
+                      </div>
+                   </ng-container>
+                  </div>
+          
+                  <div class="form-group">
+                    <button type="submit" value="Sign Up" class="btn float-right login_btn"> Login </button>
+                  </div>
+                  
+                </form>
+             
+                <mat-card-footer>
+                  <div class="d-flex justify-content-center links">
+                    Don't Have an account? &nbsp; <button (click)="signupNavigate()"> Register </button>
+                  </div>
+                </mat-card-footer>
+        
+            </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+
