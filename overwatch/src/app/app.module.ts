@@ -9,6 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { ComponentsModule } from './components/components.module';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AuthGuard } from './guards/auth.guard';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot() 
 
   ],
   providers: [AuthService,AuthGuard],

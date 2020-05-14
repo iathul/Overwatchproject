@@ -9,7 +9,7 @@ import { AuthService } from "./service/auth.service"
 export class AppComponent {
   title = 'overwatch';
 
-  constructor(private auth: AuthService){}
+  constructor(public auth: AuthService){}
   
   ngOnInit() {
     //document.body.classList.add('bg-img');

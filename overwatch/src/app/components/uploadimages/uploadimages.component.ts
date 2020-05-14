@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr'
 //import { FormGroup,FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -13,7 +14,7 @@ export class UploadimagesComponent implements OnInit {
   public name ="" 
   public crimeNumber =""
   message:any
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private toastr:ToastrService) { }
 
   ngOnInit() {
 
@@ -37,7 +38,7 @@ export class UploadimagesComponent implements OnInit {
     }
     this.http.post('http://localhost:3000/api/create/5ebc1838c809ec29ea9b7110',fd).subscribe(res=>{
       this.message = res
-    
+      console.log(this.message)
     })
     console.log(fd)        
   }
