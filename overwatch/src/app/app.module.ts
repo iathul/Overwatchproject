@@ -25,7 +25,11 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }) 
 
   ],
   providers: [AuthService,AuthGuard],
