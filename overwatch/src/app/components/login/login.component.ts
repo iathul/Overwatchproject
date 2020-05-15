@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   validate:  FormGroup;
   
-
+  id:any
   constructor(private auth: AuthService,
               private router:Router,
               private fb:FormBuilder,
@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res),
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/createlookoutdata']); 
+        this.id = res.user._id
+        this.router.navigate(['/createlookoutdata',this.id]); 
         this.notify.showSucess('Login Sucess','Sucess')
       },
       err => {

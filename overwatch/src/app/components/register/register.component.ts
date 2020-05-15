@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   validate:  FormGroup;
   registerUserData = {}
+  id:any
   constructor( 
             private auth: AuthService,
             private router:Router,
@@ -58,7 +59,8 @@ registerUser(form){
     .subscribe(res=>{
       console.log(res),
       localStorage.setItem('token',res.token);
-      this.router.navigate(['/createlookoutdata']);
+      this.id = res.user._id
+      this.router.navigate(['/createlookoutdata' ,this.id]);
       this.notify.showSucess('Signup Sucess','Sucess')
     },
       err => {
