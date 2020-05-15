@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { NotificationService } from '../service/utility/notification.service'
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private serverAdd = "http://localhost:3000/api"
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+              private http: HttpClient, 
+              private router: Router, 
+              private notify:NotificationService) { }
 
 
   registerUser(user){
@@ -32,6 +36,7 @@ export class AuthService {
   logoutUser(){
     localStorage.removeItem('token')
     this.router.navigate(['/login']);
+    this.notify.showSucess('Signout Sucess','Sucess')
   }
 
  

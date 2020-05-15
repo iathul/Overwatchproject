@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router'
 import { AuthService } from '../../service/auth.service'
+import { NotificationService } from '../../service/utility/notification.service'
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,11 @@ export class RegisterComponent implements OnInit {
 
   validate:  FormGroup;
   registerUserData = {}
-  constructor( private auth: AuthService,private router:Router,private fb:FormBuilder) { }
+  constructor( 
+            private auth: AuthService,
+            private router:Router,
+            private fb:FormBuilder,
+            private notify:NotificationService) { }
 
   ngOnInit() {
 
@@ -53,11 +58,16 @@ registerUser(form){
     .subscribe(res=>{
       console.log(res),
       localStorage.setItem('token',res.token);
-      this.router.navigate(['/fileupload']);
+      this.router.navigate(['/createlookoutdata']);
+      this.notify.showSucess('Signup Sucess','Sucess')
     },
-      err => console.log(err)
+      err => {
+        if(err){
+          this.notify.showError('Something went wrong, Please try again','Error')
+        }
+      }
     )
-    //console.log(form.value)
+  
 
 }
 

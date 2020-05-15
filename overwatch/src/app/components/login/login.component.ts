@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router'
 import { AuthService } from '../../service/auth.service'
+import { NotificationService } from '../../service/utility/notification.service'
 
 
 @Component({
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
   validate:  FormGroup;
   
 
-  constructor(private auth: AuthService,private router:Router,private fb:FormBuilder) { }
+  constructor(private auth: AuthService,
+              private router:Router,
+              private fb:FormBuilder,
+              private notify:NotificationService) { }
 
   ngOnInit() {
 
@@ -55,11 +59,15 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res),
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/fileupload']); 
+        this.router.navigate(['/createlookoutdata']); 
+        this.notify.showSucess('Login Sucess','Sucess')
       },
-      err => console.log(err)
+      err => {
+        if(err){
+          this.notify.showError('Something went wrong, Please try again','Error')
+        }
+      }
     )
-    console.log(form.value)
   
   }
 

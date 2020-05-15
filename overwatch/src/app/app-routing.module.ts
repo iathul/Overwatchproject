@@ -14,7 +14,7 @@ const routes: Routes = [
   { path :'home', component:HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'fileupload', component:UploadimagesComponent,canActivate:[AuthGuard]},
+  { path: 'createlookoutdata', component:UploadimagesComponent,canActivate:[AuthGuard]},
   { path: 'search', component:SearchculpritComponent },
   { path: 'gallery',component:GalleryComponent },
   { path :'profile',component:ProfileComponent },
