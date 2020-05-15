@@ -36,7 +36,7 @@ export class UploadimagesComponent implements OnInit {
     for(var i = 0;i<this.selectedFile.length;i++){
       fd.append('image',this.selectedFile[i])
     }
-    this.http.post('http://localhost:3000/api/create',fd)
+    this.http.post('http://localhost:3000/api/create/5ebe37f74d951518afd9b311',fd)
     .subscribe(res=>{
       this.message = res
       this.notify.showSucess(this.message.message,'Success')
@@ -44,8 +44,7 @@ export class UploadimagesComponent implements OnInit {
       if(err){
         this.notify.showError('Something went wrong','Error')
       }
-    })
-    //console.log(fd)           
+    })       
   }
 }
 

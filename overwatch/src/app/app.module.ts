@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { ComponentsModule } from './components/components.module';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
+import { TokenInterceptorService} from './service/token-interceptor/token-interceptor.service'
 
 
 @NgModule({
@@ -32,7 +33,11 @@ import { ToastrModule } from 'ngx-toastr';
     }) 
 
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard,{
+    provide:HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
