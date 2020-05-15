@@ -57,12 +57,9 @@ registerUser(form){
     },
       err => console.log(err)
     )
-    console.log(form.value)
+    //console.log(form.value)
 
 }
-
-
-
 
   loginNavigate(){
     this.router.navigate(['/login']);

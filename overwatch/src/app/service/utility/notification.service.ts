@@ -11,4 +11,8 @@ export class NotificationService {
     this.toastr.success(msg,title)
   }
 
+  showWarning(msg,title){
+    this.toastr.warning(msg,title)
+  }
+
 }
