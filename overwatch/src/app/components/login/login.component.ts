@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(form.value)
      .subscribe(
       res => {
-        console.log(res),
         localStorage.setItem('token', res.token);
         this.id = res.user._id
         this.router.navigate(['/createlookoutdata',this.id]); 

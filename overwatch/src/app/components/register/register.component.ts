@@ -57,7 +57,6 @@ validateMsg = {
 registerUser(form){
     this.auth.registerUser(form.value)
     .subscribe(res=>{
-      console.log(res),
       localStorage.setItem('token',res.token);
       this.id = res.user._id
       this.router.navigate(['/createlookoutdata' ,this.id]);
