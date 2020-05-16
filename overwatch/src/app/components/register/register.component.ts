@@ -11,9 +11,9 @@ import { NotificationService } from '../../service/utility/notification.service'
 })
 export class RegisterComponent implements OnInit {
 
-  validate:  FormGroup;
-  registerUserData = {}
-  id:any
+  validate: FormGroup;
+  errMsg: any
+  resMsg: any
   constructor( 
             private auth: AuthService,
             private router:Router,
@@ -57,14 +57,15 @@ validateMsg = {
 registerUser(form){
     this.auth.registerUser(form.value)
     .subscribe(res=>{
-      localStorage.setItem('token',res.token);
-      this.id = res.user._id
-      this.router.navigate(['/createlookoutdata' ,this.id]);
-      this.notify.showSucess('Signup Sucess','Sucess')
+      this.resMsg = res.message
+      this.router.navigate(['/login']);
+      this.notify.showSucess(`${this.resMsg}, Please Login`,'Sucess')
     },
-      err => {
-        if(err){
-          this.notify.showError('Something went wrong, Please try again','Error')
+      error => {
+        if(error){
+          this.errMsg = error.error.error
+          this.notify.showError(this.errMsg,"Error")
+
         }
       }
     )

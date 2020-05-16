@@ -13,8 +13,9 @@ import { NotificationService } from '../../service/utility/notification.service'
 export class LoginComponent implements OnInit {
 
   validate:  FormGroup;
-  
   id:any
+  errMssg:any
+
   constructor(private auth: AuthService,
               private router:Router,
               private fb:FormBuilder,
@@ -60,11 +61,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.id = res.user._id
         this.router.navigate(['/createlookoutdata',this.id]); 
-        this.notify.showSucess('Login Sucess','Sucess')
+        this.notify.showSucess('Login Sucessfull','Sucess')
       },
-      err => {
-        if(err){
-          this.notify.showError('Something went wrong, Please try again','Error')
+      error => {
+        if(error){
+          this.errMssg = error.error.error
+          this.notify.showError( this.errMssg,'Error')
         }
       }
     )
