@@ -14,7 +14,7 @@ const {getUserById} = require('../controllers/user')
 router.param("userId",getUserById)
 router.param("lookoutDataId",getLookOutDataById)
 
-router.post('/create/:userId',  createLookOutData);
+router.post('/create/:userId', isSignedIn,isAuthenticated, createLookOutData);
 router.get('/getdata/:lookoutDataId',getLookOutData);
 router.get('/getalldata',getAllLookoutData)
 router.put('/updatedata/:lookoutDataId/:userId', isSignedIn, isAuthenticated, updateLookOutData);
