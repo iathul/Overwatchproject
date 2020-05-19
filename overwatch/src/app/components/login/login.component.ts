@@ -56,20 +56,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(form){
     this.auth.loginUser(form.value)
-     .subscribe(
-      res => {
-        localStorage.setItem('token', res.token);
-        this.id = res.user._id
-        this.router.navigate(['/createlookoutdata',this.id]); 
-        this.notify.showSucess('Login Sucessfull','Sucess')
-      },
-      error => {
-        if(error){
-          this.errMssg = error.error.error
-          this.notify.showError( this.errMssg,'Error')
-        }
-      }
-    )
+    
   
   }
 

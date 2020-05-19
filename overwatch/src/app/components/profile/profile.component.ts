@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router'
+import { NotificationService } from '../../service/utility/notification.service'
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  _id:any
+  constructor(
+            private http:HttpClient, 
+            private notify:NotificationService,
+            private route:ActivatedRoute,
+            private router:Router
+  ) { }
 
   ngOnInit() {
 
-    //document.body.classList.add('bg-img');
+    this.route.paramMap.subscribe((params:ParamMap)=>{
+      let id = params.get('id');
+      this._id = id
+    })
+  
 
   }
 

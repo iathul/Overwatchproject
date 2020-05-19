@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router'
 import { NotificationService } from '../../service/utility/notification.service'
+import { AuthService } from '../../service/auth.service'
 
 @Component({
   selector: 'app-uploadimages',
@@ -14,22 +15,18 @@ export class UploadimagesComponent implements OnInit {
   public name ="" 
   public crimeNumber =""
   message:any
-  _id:any
+  id:any
   constructor(
               private http:HttpClient, 
               private notify:NotificationService,
               private route:ActivatedRoute,
-              private router:Router
+              private router:Router,
+              private auth: AuthService
               ) { }
 
   ngOnInit() {
-
-  this.route.paramMap.subscribe((params:ParamMap)=>{
-    let id = params.get('id');
-    this._id = id
-  })
-
-  }
+    this.id = this.auth.getUserId()
+}
 
   onFileChange(event){
     for(var i = 0;i<event.target.files.length;i++){
@@ -45,7 +42,7 @@ export class UploadimagesComponent implements OnInit {
     for(var i = 0;i<this.selectedFile.length;i++){
       fd.append('image',this.selectedFile[i])
     }
-    this.http.post(`http://localhost:3000/api/create/${this._id}`,fd)
+    this.http.post(`http://localhost:3000/api/create/${this.id}`,fd)
     .subscribe(res=>{
       this.message = res
       this.notify.showSucess(this.message.message,'Success')
