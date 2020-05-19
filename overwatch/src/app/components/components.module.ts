@@ -9,6 +9,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { SearchculpritComponent } from './searchculprit/searchculprit.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { SearchculpritComponent } from './searchculprit/searchculprit.component'
     UploadimagesComponent, 
     GalleryComponent, 
     ProfileComponent, 
-    HomeComponent, SearchculpritComponent, 
+    HomeComponent, SearchculpritComponent, PagenotfoundComponent, 
   ],
   imports: [ CommonModule,MaterialModule, FormsModule,ReactiveFormsModule,],
   

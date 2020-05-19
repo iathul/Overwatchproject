@@ -30,6 +30,7 @@ import { TokenInterceptorService} from './service/token-interceptor/token-interc
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
+      closeButton:true
     }) 
 
   ],
