@@ -21,10 +21,11 @@ const routes: Routes = [
   },
   { path: 'search', 
     component:SearchculpritComponent,
-    canActivate:[AuthGuard] },
+    canActivate:[AuthGuard] 
+  },
   { path: 'gallery',
     component:GalleryComponent,
-    canActivate:[AuthGuard]
+    //canActivate:[AuthGuard]
   },
   { path :'profile',
     component:ProfileComponent,
