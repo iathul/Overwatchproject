@@ -2,20 +2,10 @@
 
 html, body { 
     height: auto; 
-    margin: 0; 
+    margin: 0px; 
+    padding: 0vw;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    width:100vw;
 }
 
 
-.bg-img
-{
-    background-image: url('/assets/images/home2.jpg');
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    
-}
