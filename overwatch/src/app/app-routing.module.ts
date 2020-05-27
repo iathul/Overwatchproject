@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   { path: 'gallery',
     component:GalleryComponent,
-    //canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   { path :'profile',
     component:ProfileComponent,
