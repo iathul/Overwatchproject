@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LookoutService } from '../../service/lookout/lookout.service'
 
 @Component({
   selector: 'app-gallery',
@@ -8,13 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GalleryComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(
+                private http:HttpClient,
+                private lookout:LookoutService
+                ) { }
   public imageData:any = []
   ngOnInit() {
 
-    document.body.classList.add('bg-img');
-
-    this.http.get('http://localhost:3000/api/file/viewimages').subscribe(
+    this.lookout.getImages().subscribe(
       res=>{
         this.imageData = res
         console.log(this.imageData)

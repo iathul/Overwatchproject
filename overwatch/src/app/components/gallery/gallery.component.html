@@ -1,36 +1,38 @@
-<div class="container">
-  <div class="gallery" *ngFor="let data of imageData" >
-    <div class="row">
-      <div class="col-sm">
-        <div class="card text-center">
-            <div class="card-body">
-                <img src="{{data.front}}" class="card-img-top">
-            </div> 
-            <div class="card-footer text-muted">
-             {{data.name}} front
-            </div>
-         </div>
+
+<div class="bg-img">
+  <div class="container" *ngFor="let data of imageData">
+    <div class="row justify-content-center">
+      <div class="col-md-4 col-sm-4"> 
+        <div class="card" >
+          <div class="card-body">
+            <img src="{{data.images.front.path}}" class="card-img-top">
+          </div>
+          <div class="card-footer text-muted">
+            {{data.name}}
+          </div>
+        </div>
       </div>
-      <div class="col-sm">
-        <div class="card text-center">
-            <div class="card-body">
-                <img src="{{data.right}}" class="card-img-top">
-            </div> 
-            <div class="card-footer text-muted">
-             {{data.name}} right
-            </div>
-         </div>
+      <div class="col-md-4 col sm-4">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{data.images.right.path}}" class="card-img-top">
+          </div>
+          <div class="card-footer text-muted">
+            {{data.name}}
+          </div>
+        </div>
       </div>
-      <div class="col-sm">
-        <div class="card text-center">
-            <div class="card-body">
-                <img src="{{data.left}}" class="card-img-top">
-            </div> 
-            <div class="card-footer text-muted">
-             {{data.name}} left
-            </div>
-         </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{data.images.left.path}}" class="card-img-top">  
+          </div>
+          <div class="card-footer text-muted">
+            {{data.name}}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

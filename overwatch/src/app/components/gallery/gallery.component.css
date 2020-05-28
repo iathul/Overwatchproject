@@ -1,22 +1,47 @@
-.container{
-    padding-top: 70px;
+
+
+.bg-img{
+
+    background-image: url('../../../assets/images/bg4.jpg');
+    background-color: #1d539f;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: white;
     
 }
-.gallery{
+
+.container{
+    padding-top: 75px;
     padding-bottom: 20px;
-    padding-top: 20px;
 }
 
-.card-title{
-    color: black;
+.card{
+    width: 17rem;
+    height: 20rem;
+    margin: auto;
+}
+@media only screen and (max-width: 990px){
+    .card{
+        width: 14rem;
+        height: 17rem;
+        margin: auto;
+    }
 }
 
-.card {
-    width: 250px;
-    height: 300px;
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: 225px;
+        height: 255px;
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-.card-img-top{
-    height: 200px;
-    width: 200px;
-}
+    
+
