@@ -1,7 +1,8 @@
 <div class="bg-img">
     <div class="container">
+        
         <div class="row ">
-            <div class="col-lg-4 col-md-4 my-5">
+            <div class="col-lg-4 col-md-4 my-5 myclass">
                 <div class="search">
                     <h2> Search Your Culprit </h2>
                     <div class="search-box">
@@ -12,8 +13,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 ">
-                
+            <div class="col-lg-8 col-md-8">
+                <div class="wrappers">
+                    <div class="card" *ngFor="let data of imageData">
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="img-card" src="{{data.images.front.path}}">    
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-text"> Culprit Name : {{data.name}} </p>
+                                    <p class="card-text"> Crime No: {{data.crimeNumber}} </p>
+                                    <a href="#" class="btn float-right btn-primary"> Find On CCTV </a>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+        
+
+                   
             </div>
         </div>
     </div>
