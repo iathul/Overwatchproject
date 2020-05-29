@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router'
 import { NotificationService } from '../../service/utility/notification.service'
+import { MatDialog } from '@angular/material'
+import {UpdateprofileComponent} from '../updateprofile/updateprofile.component'
 
 @Component({
   selector: 'app-profile',
@@ -15,17 +17,14 @@ export class ProfileComponent implements OnInit {
             private http:HttpClient, 
             private notify:NotificationService,
             private route:ActivatedRoute,
-            private router:Router
+            private router:Router,
+            public dialog: MatDialog
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-    this.route.paramMap.subscribe((params:ParamMap)=>{
-      let id = params.get('id');
-      this._id = id
-    })
-  
-
+  updateProfile(){
+    this.dialog.open(UpdateprofileComponent);
   }
 
 }
