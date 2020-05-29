@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { SearchculpritComponent } from './searchculprit/searchculprit.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     UploadimagesComponent, 
     GalleryComponent, 
     ProfileComponent, 
-    HomeComponent, SearchculpritComponent, PagenotfoundComponent, 
+    HomeComponent, SearchculpritComponent, PagenotfoundComponent, UpdateprofileComponent, 
   ],
   imports: [ CommonModule,MaterialModule, FormsModule,ReactiveFormsModule,],
   
