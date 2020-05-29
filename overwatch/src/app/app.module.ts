@@ -10,6 +10,7 @@ import { ComponentsModule } from './components/components.module';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
+import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component'
 import { TokenInterceptorService} from './service/token-interceptor/token-interceptor.service'
 
 
@@ -17,6 +18,7 @@ import { TokenInterceptorService} from './service/token-interceptor/token-interc
   declarations: [
     AppComponent,
    ],
+   entryComponents:[UpdateprofileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,7 +29,7 @@ import { TokenInterceptorService} from './service/token-interceptor/token-interc
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 5000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       closeButton:true

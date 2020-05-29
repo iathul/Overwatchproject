@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment'
 import { NotificationService } from '../service/utility/notification.service'
 
 
@@ -10,9 +11,7 @@ import { NotificationService } from '../service/utility/notification.service'
 })
 export class AuthService {
 
-  
-
-  private serverAdd = "http://localhost:3000/api"
+  private serverAdd =`${environment.serverAdd}`
   errMsg:any
   constructor(
               private http: HttpClient, 
@@ -26,7 +25,7 @@ export class AuthService {
 
   
 loginUser(user){
-  return this.http.post<any>(`${this.serverAdd}/login`, user).subscribe(
+  return this.http.post<any>(`${this.serverAdd}/login`, user).subscribe( 
     res => {
       localStorage.setItem('token',res.token);
       localStorage.setItem('userId',res.user._id)

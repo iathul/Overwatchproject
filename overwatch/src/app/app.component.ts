@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(public auth: AuthService){}
   
   ngOnInit() {
-    //document.body.classList.add('bg-img');
+    
 }
 
 }
