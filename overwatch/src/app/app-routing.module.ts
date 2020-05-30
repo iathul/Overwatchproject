@@ -7,7 +7,7 @@ import { UploadimagesComponent } from './components/uploadimages/uploadimages.co
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ProfileComponent } from './components/profile/profile.component'
 import { HomeComponent } from './components/home/home.component';
-import {SearchculpritComponent } from './components/searchculprit/searchculprit.component'
+import { SearchculpritComponent } from './components/searchculprit/searchculprit.component'
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component'
 
 const routes: Routes = [
