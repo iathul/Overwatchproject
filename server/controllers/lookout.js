@@ -5,7 +5,7 @@ const fs      = require('fs');
 
 const storage = multer.diskStorage({
     destination:'./upload/images',
-    filename:(req,file,cb)=>{
+    filename:(req,file,cb) => {
         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
 });
@@ -77,6 +77,7 @@ exports.getLookOutData = (req,res)=>{
     return res.json(req.lookOutData);
 }
 
+
 exports.getAllLookoutData = (req,res)=>{
     Lookout.find().exec((err,data)=>{
         if(err){
@@ -96,6 +97,18 @@ exports.getAllLookoutData = (req,res)=>{
             searchResult.push(imageData);
         }
         res.status(200).send(searchResult)*/
+    })
+}
+
+exports.findbyCrimeNumber = (req,res) =>{
+    Lookout.findOne({crimeNumber:req.body.crimeNumber},(err,data)=>{
+        if(err || !data){
+            return res.status(400).json({
+                error:'No Data found'
+            })
+        }else{
+            return res.status(200).json(data);
+        }
     })
 }
 

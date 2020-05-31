@@ -7,7 +7,7 @@ const lookOutSchema = new mongoose.Schema({
         required:true
     },
     crimeNumber:{
-        type:Number
+        type:String
     },
     user:{
         type:ObjectId,

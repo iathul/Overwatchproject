@@ -5,18 +5,16 @@ const { v4: uuidv4 } = require('uuid');
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
     },
     designation:{
         type:String
     },
+    mobile:Number,
     email:{
         type:String,
-        required:true
     },
     hashedPswd:{
         type:String,
-        required:true,
         min:8,
         max:1024
     },
@@ -26,6 +24,17 @@ const userSchema = new mongoose.Schema({
     },
     district:{
         type:String
+    },
+    state:{
+        type:String,
+    },
+    country:{
+        type:String
+    },
+    profile:{
+        path:{
+            type:String
+        }
     }
     
 })
@@ -37,7 +46,7 @@ userSchema.virtual("password")
         this.hashedPswd  = this.securePassword(password)
     })
     .get(function(){
-        return this._password
+        return this._password   
     })
 
 userSchema.methods = {

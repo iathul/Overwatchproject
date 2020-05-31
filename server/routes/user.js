@@ -2,8 +2,9 @@ const router  = require('express').Router()
 const { 
     getUserById,
     getUser,
-    updateUser,
-    userLookOutData 
+    updateUserProfilePic,
+    userLookOutData,
+    updateUser
 } = require('../controllers/user');
 
 const {
@@ -16,6 +17,8 @@ router.param("userId",getUserById)
 
 router.get('/user/:userId', isSignedIn, isAuthenticated, getUser);
 router.get('/user/getuserlookoutdata/:userId', isSignedIn, isAuthenticated, userLookOutData);
-router.put("/user/:userId", isSignedIn, isAuthenticated, updateUser);
+router.put("/user/updateprofilepic/:userId", isSignedIn, isAuthenticated, updateUserProfilePic);
+router.put("/user/updateuserdata/:userId",isSignedIn,isAuthenticated,updateUser)
+
 
 module.exports = router;
