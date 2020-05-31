@@ -58,7 +58,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" *ngIf = "auth.loggedIn()" href="#" id="navbardrop" data-toggle="dropdown">
               <i class="far fa-user"></i>
-                User
+                Hi, {{userName}}
             </a>
             <div class="dropdown-menu">
               <a class="nav-link" *ngIf = "auth.loggedIn()" routerLink="/profile" routerLinkActive="active"> <i class="fas fa-user"></i> Profile </a>

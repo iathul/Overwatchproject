@@ -6,13 +6,10 @@ import { AuthService } from "./service/auth.service"
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'overwatch';
-
-  constructor(public auth: AuthService){}
+export class AppComponent  {
   
-  ngOnInit() {
-    
-}
+constructor(public auth: AuthService){}
+  
+  public userName = this.auth.getUserName();
 
 }
