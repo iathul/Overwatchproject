@@ -29,6 +29,7 @@ app.use('/api', authRoute);
 app.use('/api', userRoute)
 app.use('/api', lookoutRoute);
 app.use('/api/images', express.static('upload/images')); 
+app.use('/api/profile',express.static('upload/images/profile'));
 
 
 
