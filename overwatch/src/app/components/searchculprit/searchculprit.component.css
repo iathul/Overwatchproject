@@ -72,15 +72,15 @@
 
 @media screen and (min-width: 992px){
     .card{
-        width: 25rem;
-        height: 10rem;
+        width: 25.5rem;
+        height: 11rem;
         margin-top: 10px;
         margin-left: 90px;
     }
     .img-card{
         width:120%;
         height: 100%;;
-        padding-top: 20px;
+        padding-top: 16px;
         padding-left: 15px;
         
     }
@@ -99,7 +99,7 @@
 
     .card{
         width: 24rem;
-        height: 10rem;
+        height: 11rem;
         margin-top: 10px;
         margin-left: 10px;
     
@@ -107,7 +107,7 @@
     .img-card{
         width:120%;
         height: 100%;;
-        padding-top: 20px;
+        padding-top: 16px;
         padding-left: 15px;
         
     }

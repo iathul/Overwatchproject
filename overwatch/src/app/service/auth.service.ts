@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { BehaviorSubject, Observable } from 'rxjs'
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment'
 import { NotificationService } from '../service/utility/notification.service'
@@ -11,7 +10,7 @@ import { NotificationService } from '../service/utility/notification.service'
 })
 export class AuthService {
 
-  private serverAdd =`${environment.serverAdd}`
+  serverAdd =`${environment.serverAdd}`
   errMsg:any
   constructor(
               private http: HttpClient, 
@@ -24,51 +23,35 @@ export class AuthService {
   }
 
   
-loginUser(user){
-  return this.http.post<any>(`${this.serverAdd}/login`, user).subscribe( 
-    res => {
-      localStorage.setItem('token',res.token);
-      localStorage.setItem('userId',res.user._id)
-      this.router.navigate(['/createlookoutdata']); 
-      this.notify.showSucess('Login Sucessfull','Sucess')
-    },
-    error => {
-      if(error){
-        this.errMsg = error.error.error
-        this.notify.showError( this.errMsg,'Error')
-      }
-    }
-  );
-}
-
-  
-
-  
+  loginUser(user){
+    return this.http.post<any>(`${this.serverAdd}/login`, user)
+  }
 
   getToken(){
     return localStorage.getItem('token');
-    
-
   }
 
   loggedIn(){
     return !!localStorage.getItem('token'); 
-    
   }
+
   getUserId(){
     return localStorage.getItem('userId');
-    
-    
+  }
+
+  getUserName(){
+    return localStorage.getItem('userName')
   }
 
   logoutUser(){
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    localStorage.removeItem('userName')
     this.router.navigate(['/login']);
     this.notify.showSucess('Signout Sucess','Sucess')
+    setTimeout(()=>{
+      window.location.reload()
+    },500)
   }
-
- 
-  
 
 }

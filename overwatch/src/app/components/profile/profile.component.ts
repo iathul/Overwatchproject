@@ -66,7 +66,10 @@ export class ProfileComponent implements OnInit {
     this.http.put(`${this.serverAdd}/user/updateprofilepic/${this._id}`,fd)
     .subscribe(res=>{
       this.message = res
-      this.notify.showSucess(this.message.message,'Success')   
+      this.notify.showSucess(this.message.message,'Success') 
+      setTimeout(()=>{
+        window.location.reload()
+      },1000)  
     },err=>{
       if(err){
         this.notify.showError('Something went wrong','Error')

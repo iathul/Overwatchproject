@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   validate:  FormGroup;
   id:any
-  errMssg:any
+  errMsg:any
 
   constructor(private auth: AuthService,
               private router:Router,
@@ -55,9 +55,27 @@ export class LoginComponent implements OnInit {
   
 
   loginUser(form){
-    this.auth.loginUser(form.value)
+    return this.auth.loginUser(form.value).subscribe( 
+      res => {
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('userId',res.user._id)
+        localStorage.setItem('userName',res.user.name)
+        this.router.navigate(['/createlookoutdata'],); 
+        this.notify.showSucess('Login Sucessfull','Sucess')
+        setTimeout(()=>{
+          window.location.reload()
+        },500)
+      },
+      
+      error => {
+        if(error){
+          this.errMsg = error.error.error
+          this.notify.showError( this.errMsg,'Error')
+        }
+      },
+      
+    );
     
-  
   }
 
   signupNavigate(){
