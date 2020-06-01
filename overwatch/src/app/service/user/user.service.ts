@@ -20,13 +20,23 @@ export class UserService {
              
   getUserData(){
     this._id = this.auth.getUserId()
-    return this.http.get<any>(`${this.serverAdd}/user/${this._id}`,)
+    return this.http.get<any>(`${this.serverAdd}/user/${this._id}`)
   }
 
 
   addUserData(user){
     this._id = this.auth.getUserId()
     return this.http.put<any>(`${this.serverAdd}/user/updateuserdata/${this._id}`,user)
+  }
+
+  getUserLookoutData(){
+    this._id = this.auth.getUserId()
+    return this.http.get<any>(`${this.serverAdd}/user/getuserlookoutdata/${this._id}`)
+  }
+
+  deleteLookoutData(id){
+    this._id = this.auth.getUserId()
+    return this.http.delete(`${this.serverAdd}/deletedata/${id}/${this._id}`)
   }
 
 }

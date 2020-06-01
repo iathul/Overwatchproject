@@ -43,8 +43,9 @@ export class UploadimagesComponent implements OnInit {
       fd.append('image',this.selectedFile[i])
     }
     this.http.post(`http://localhost:3000/api/create/${this.id}`,fd)
-    .subscribe(res=>{
+    .subscribe(res => {
       this.message = res
+      localStorage.setItem('culpritId',this.message.culpritId)
       this.notify.showSucess(this.message.message,'Success')
     },err=>{
       if(err){

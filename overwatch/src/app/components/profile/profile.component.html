@@ -1,8 +1,8 @@
 <div class="container">
     <div class="profile-header">
       <div class="profile-img">
-        <img src="{{profile_pic}}" width="200" alt="Profile Image">
-        
+        <img *ngIf="profile_pic" src="{{profile_pic}}" width="200" alt="Profile Image">
+        <img *ngIf="!profile_pic" src="../../../assets/images/user-512.png" width="200" alt="Profile Image">
       </div>
       <div class="profile-nav-info">
         <h3 class="user-name"> {{fullName}} </h3>
@@ -29,11 +29,11 @@
             <input type="file" (change)="onFileChange($event)">
           </div>
           <div class="details">
-            <p class="user-mail"> <i class="fa fa-envelope"></i> {{userEmail}} </p>
-            <p class="mobile-no"> <i class="fa fa-phone"></i> {{mobile_no}}</p>
-            <p class="user-mail"> <i class="fas fa-home"></i> {{station}} </p>
-            <p class="user-mail"> <i class="fas fa-map-marker"></i> {{district}}, {{state}} </p>
-            <p class="user-mail"> <i class="fas fa-globe-asia"></i> {{country}} </p>
+              <p class="user-mail"> <i class="fa fa-envelope"></i> {{userEmail}} </p>
+              <p *ngIf="mobile_no" class="mobile-no"> <i class="fa fa-phone"></i> {{mobile_no}}</p>
+              <p *ngIf="station" class="user-mail"> <i class="fas fa-home"></i> {{station}} </p>
+              <p *ngIf="district" class="user-mail"><i class="fas fa-map-marker"></i> {{district}}, {{state}} </p>
+              <p *ngIf="country" class="user-mail"> <i class="fas fa-globe-asia"></i> {{country}} </p>
           </div>
          
           <div class="user-bio">
@@ -76,28 +76,37 @@
           </ul>
         </div>-->
         <div class="profile-body">
-          
-          <!--<div class="profile-posts tab">
-            <h1>Your Post</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa quia sunt itaque ut libero cupiditate ullam qui velit laborum placeat doloribus, non tempore nisi ratione error rem minima ducimus. Accusamus adipisci quasi at itaque repellat sed
-              magni eius magnam repellendus. Quidem inventore repudiandae sunt odit. Aliquid facilis fugiat earum ex officia eveniet, nisi, similique ad ullam repudiandae molestias aspernatur qui autem, nam? Cupiditate ut quasi iste, eos perspiciatis maiores
-              molestiae.</p>
-          </div>-->
-          <!--<div class="profile-reviews tab">
-            <h1>User reviews</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam pariatur officia, aperiam quidem quasi, tenetur molestiae. Architecto mollitia laborum possimus iste esse. Perferendis tempora consectetur, quae qui nihil voluptas. Maiores debitis
-              repellendus excepturi quisquam temporibus quam nobis voluptatem, reiciendis distinctio deserunt vitae! Maxime provident, distinctio animi commodi nemo, eveniet fugit porro quos nesciunt quidem a, corporis nisi dolorum minus sit eaque error
-              sequi ullam. Quidem ut fugiat, praesentium velit aliquam!</p>
-          </div>-->
-          <!--<div class="profile-settings tab">
-            <div class="account-setting">
-              <h1>Acount Setting</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit omnis eaque, expedita nostrum, facere libero provident laudantium. Quis, hic doloribus! Laboriosam nemo tempora praesentium. Culpa quo velit omnis, debitis maxime, sequi
-                animi dolores commodi odio placeat, magnam, cupiditate facilis impedit veniam? Soluta aliquam excepturi illum natus adipisci ipsum quo, voluptatem, nemo, commodi, molestiae doloribus magni et. Cum, saepe enim quam voluptatum vel debitis
-                nihil, recusandae, omnis officiis tenetur, ullam rerum.</p>
+          <div class="lookout-title">
+            <h2> Manage Culprit Data </h2>
+          </div>
+            <div class="not-found">
+              <h3 *ngIf="!resState"> No data found </h3>
             </div>
-          </div>-->
+  
+          <div *ngIf="resState" class="wrappers">
+            <div class="card"  *ngFor="let data of userLookoutData">
+              <div class="row">
+                  <div class="col-4">
+                      <img class="img-card" src="{{data.images.front.path}}">    
+                  </div>
+                  <div class="col-8">
+                      <div class="card-body">
+                          <p class="card-text"> Culprit Name : {{data.name}} </p>
+                          <p class="card-text"> Crime No: {{data.crimeNumber}} </p>
+                          <div class="row">
+                            <div class="col-9">
+                              <!--<button title="Update" class="btn float-right  btn-primary" > <i class="fas fa-pen-square"></i> </button>-->
+                            </div>
+                            <div class="col-3">
+                              <button title="Delete" class="btn float-right btn-danger" (click)="deleteLookOutData(data)" > <i class="fas fa-trash"></i> </button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>

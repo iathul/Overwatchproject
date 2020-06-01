@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LookoutService } from '../../service/lookout/lookout.service'
+import { NotificationService } from '../../service/utility/notification.service'
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-searchculprit',
@@ -7,16 +9,32 @@ import { LookoutService } from '../../service/lookout/lookout.service'
   styleUrls: ['./searchculprit.component.css']
 })
 export class SearchculpritComponent implements OnInit {
+
   public imageData:any = []
   searchCrimeNumber:any = {}
   searchResult:any = []
   state = false
-  constructor( private lookout:LookoutService) { }
+  resState = false
+  errMsg:any
+  response:any =[]
+  path:any = {
+    front:"",
+    right:"",
+    left:""
+  }
+
+  constructor(  private lookout:LookoutService,
+                private notify:NotificationService
+             ) { }
 
   ngOnInit() {
     this.lookout.getImages().subscribe(
       res=>{
         this.imageData = res
+        if(this.imageData && this.imageData.length > 0){
+          this.resState = true
+          console.log(this.resState)
+        }
       }
     )  
 
@@ -27,11 +45,30 @@ export class SearchculpritComponent implements OnInit {
       res=>{
         if(res!=null){
           this.state = true
+          console.log(this.state);
         }
         this.searchResult = res
-        console.log(this.searchResult.name)
+      },
+      err=>{
+        this.errMsg = err
+        this.notify.showError(this.errMsg.error.error,'Error')
       }
     )
+  }
+
+   find(id){
+    this.lookout.find(id._id).subscribe(
+     async res=>{
+       
+        this.response = res
+        this.path.front = await this.response.images.front.path
+        this.path.right = await this.response.images.right.path
+        this.path.left  = await this.response.images.left.path
+        //console.log(this.path)
+        this.lookout.findOnCamera(this.path)
+      }
+    )
+    
   }
 
 }

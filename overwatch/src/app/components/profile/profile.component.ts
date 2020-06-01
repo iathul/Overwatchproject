@@ -25,7 +25,9 @@ export class ProfileComponent implements OnInit {
   state:any
   country:any
   profile_pic:any
-  selectedFile = null     
+  selectedFile = null  
+  userLookoutData:any = [] 
+  resState = false
   serverAdd =`${environment.serverAdd}`
   constructor(
             private http:HttpClient, 
@@ -40,6 +42,7 @@ export class ProfileComponent implements OnInit {
 
     this.user.getUserData().subscribe(
       res=>{
+       
         this.fullName    = res.name
         this.userEmail   = res.email
         this.designation = res.designation
@@ -53,6 +56,13 @@ export class ProfileComponent implements OnInit {
       
       
     )  
+    this.user.getUserLookoutData().subscribe(res=>{
+      
+     this.userLookoutData = res;
+     if(this.userLookoutData && this.userLookoutData.length > 0){
+        this.resState = true 
+      }
+    })
   }
 
   updateProfile(){
@@ -76,6 +86,22 @@ export class ProfileComponent implements OnInit {
       }
     })  
     
+  }
+
+  deleteLookOutData(id){
+    this.user.deleteLookoutData(id._id).subscribe(
+      res=>{
+        this.message = res
+        this.notify.showSucess(this.message.message,'Success') 
+        setTimeout(()=>{
+          window.location.reload()
+        },1000)  
+      },err=>{
+        if(err){
+          this.notify.showError('Something went wrong','Error')
+        }
+      }
+    )
   }
 
 }

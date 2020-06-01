@@ -47,11 +47,12 @@ export class AuthService {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
     localStorage.removeItem('userName')
+    localStorage.removeItem('culpritId')
     this.router.navigate(['/login']);
     this.notify.showSucess('Signout Sucess','Sucess')
     setTimeout(()=>{
       window.location.reload()
-    },500)
+    },100)
   }
 
 }

@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-8">
-                <div class="wrappers">
-                    <div *ngIf="!state">
+                <div *ngIf="resState" class="wrappers">
+                    <ng-template #elseblock>
                         <div class="card"  *ngFor="let data of imageData">
                             <div class="row">
                                 <div class="col-4">
@@ -28,13 +28,13 @@
                                     <div class="card-body">
                                         <p class="card-text"> Culprit Name : {{data.name}} </p>
                                         <p class="card-text"> Crime No: {{data.crimeNumber}} </p>
-                                        <a href="#" class="btn float-right btn-primary"> Find On CCTV </a>
+                                        <button class="btn float-right btn-primary" (click)="find(data)"> Find On CCTV </button>
                                       </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div *ngIf="state">
+                    </ng-template>
+                    <div *ngIf="state; else elseblock">
                         <div class="card">
                             <div class="row">
                                 <div class="col-4">

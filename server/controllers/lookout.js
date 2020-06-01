@@ -65,6 +65,7 @@ exports.createLookOutData = (req,res)=>{
                     res.send(err)
                 }else{
                     res.status(200).json({
+                        culpritId:savedData._id,
                         message:"Successfully Uploaded"
                     })
                 }
@@ -169,7 +170,5 @@ exports.updateLookOutData = (req,res) =>{
     })
     
 }
-
-
 
 

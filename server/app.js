@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 
 // Database Connection 
-mongoose.connect(process.env.db, { useNewUrlParser: true, useUnifiedTopology: true }, 
+mongoose.connect(process.env.CONNECT_DB, { useNewUrlParser: true, useUnifiedTopology: true }, 
     (err) => {
         if(err){
             console.log(err);
@@ -38,6 +38,7 @@ app.get('/',(req,res)=>{
 })
 
 const PORT = 3000;
+//const PORT = 8080;
 
 app.listen(PORT,() => {
     console.log(`Server running at PORT ${PORT}`);
