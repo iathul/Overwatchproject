@@ -12,14 +12,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component'
 import { TokenInterceptorService} from './service/token-interceptor/token-interceptor.service'
-//import { NgxSpinnerModule } from "ngx-spinner"
+import { UpdateuserdataComponent } from './components/updateuserdata/updateuserdata.component'
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
    ],
-   entryComponents:[UpdateprofileComponent],
+   entryComponents:[UpdateprofileComponent,UpdateuserdataComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchculpritComponent } from './searchculprit/searchculprit.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { UpdatelookoutdataComponent } from './updatelookoutdata/updatelookoutdata.component';
+import { UpdateuserdataComponent } from './updateuserdata/updateuserdata.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     UploadimagesComponent, 
     GalleryComponent, 
     ProfileComponent, 
-    HomeComponent, SearchculpritComponent, PagenotfoundComponent, UpdateprofileComponent, 
+    HomeComponent, SearchculpritComponent, PagenotfoundComponent, UpdateprofileComponent, UpdatelookoutdataComponent, UpdateuserdataComponent, 
   ],
   imports: [ CommonModule,MaterialModule, FormsModule,ReactiveFormsModule,],
   

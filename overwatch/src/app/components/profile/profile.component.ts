@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment'
 import { AuthService } from '../../service/auth.service'
 import { UserService } from '../../service/user/user.service'
 import { UpdateprofileComponent } from '../updateprofile/updateprofile.component'
+import { UpdateuserdataComponent } from '../updateuserdata/updateuserdata.component'
 
 @Component({
   selector: 'app-profile',
@@ -69,6 +70,7 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(UpdateprofileComponent);
   }
 
+
   onFileChange(event){
     this.selectedFile = event.target.files[0]
     const fd = new FormData();
@@ -102,6 +104,10 @@ export class ProfileComponent implements OnInit {
         }
       }
     )
+  }
+
+  updateUserData(){
+    this.dialog.open(UpdateuserdataComponent);
   }
 
 }

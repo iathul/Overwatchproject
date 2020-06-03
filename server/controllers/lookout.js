@@ -44,17 +44,17 @@ exports.createLookOutData = (req,res)=>{
                     front:{
                         originalname:req.files[0].originalname,
                         filename:req.files[0].filename,
-                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[0].filename}`  
+                        path:`http://localhost:3000/api/images/${req.files[0].filename}`  
                     },
                     right:{
                         originalname:req.files[1].originalname,
                         filename:req.files[1].filename,
-                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[1].filename}`
+                        path:`http://localhost:3000/api/images/${req.files[1].filename}`
                     },
                     left:{
                         originalname:req.files[2].originalname,
                         filename:req.files[2].filename,
-                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[2].filename}`
+                        path:`http://localhost:3000/api/images/${req.files[2].filename}`
                     }
                 }
 
@@ -136,17 +136,17 @@ exports.updateLookOutData = (req,res) =>{
                 front:{
                     originalname:req.files[0].originalname,
                     filename:req.files[0].filename,
-                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[0].filename}`  
+                    path:`http://localhost:3000/api/images/${req.files[0].filename}`  
                 },
                 right:{
                     originalname:req.files[1].originalname,
                     filename:req.files[1].filename,
-                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[1].filename}`
+                    path:`http://localhost:3000/api/images/${req.files[1].filename}`
                 },
                 left:{
                     originalname:req.files[2].originalname,
                     filename:req.files[2].filename,
-                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[2].filename}`
+                    path:`http://localhost:3000/api/images/${req.files[2].filename}`
                     }
             }
 

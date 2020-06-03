@@ -34,9 +34,21 @@ export class UserService {
     return this.http.get<any>(`${this.serverAdd}/user/getuserlookoutdata/${this._id}`)
   }
 
+  // Delete User Lookout Data
   deleteLookoutData(id){
     this._id = this.auth.getUserId()
     return this.http.delete(`${this.serverAdd}/deletedata/${id}/${this._id}`)
   }
 
+  //Update user email
+
+  updateEmail(email){
+    this._id = this.auth.getUserId()
+    return this.http.put<any>(`${this.serverAdd}/user/updateuseremail/${this._id}`,email)
+  }
+
+  updatePassword(password){
+    this._id = this.auth.getUserId()
+    return this.http.put<any>(`${this.serverAdd}/user/updatepassword/${this._id}`,password)
+  }
 }

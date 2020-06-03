@@ -100,7 +100,7 @@ exports.updateUserProfilePic = (req,res) =>{
         else
             {
             data.profile = {
-               path:`https://overwatch-279014.el.r.appspot.com/api/profile/${req.file.filename}`  
+               path:`http://localhost:3000/api/profile/${req.file.filename}`  
             }
             data.save((err,savedData)=>{
             if(err){
