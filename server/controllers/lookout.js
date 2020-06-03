@@ -1,7 +1,6 @@
 const Lookout = require('../models/lookout');
 const multer  = require('multer');
 const path    = require('path');
-const fs      = require('fs'); 
 
 const storage = multer.diskStorage({
     destination:'./upload/images',
@@ -45,24 +44,26 @@ exports.createLookOutData = (req,res)=>{
                     front:{
                         originalname:req.files[0].originalname,
                         filename:req.files[0].filename,
-                        path:`http://localhost:3000/api/images/${req.files[0].filename}`  
+                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[0].filename}`  
                     },
                     right:{
                         originalname:req.files[1].originalname,
                         filename:req.files[1].filename,
-                        path:`http://localhost:3000/api/images/${req.files[1].filename}`
+                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[1].filename}`
                     },
                     left:{
                         originalname:req.files[2].originalname,
                         filename:req.files[2].filename,
-                        path:`http://localhost:3000/api/images/${req.files[2].filename}`
+                        path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[2].filename}`
                     }
                 }
 
             })
             newData.save((err,savedData)=>{
                 if(err){
-                    res.send(err)
+                    res.status(400).json({
+                        error:"Cannot Add Details Please Try Again"
+                    })
                 }else{
                     res.status(200).json({
                         culpritId:savedData._id,
@@ -87,17 +88,7 @@ exports.getAllLookoutData = (req,res)=>{
             })
         }
         res.json(data);
-        /*searchResult = [];
-        for(i=0;i<data.length;i++){
-            imageData = {
-                name : data[i].name,
-                front: data[i].images.front.path,
-                right: data[i].images.right.path,
-                left : data[i].images.left.path
-            }
-            searchResult.push(imageData);
-        }
-        res.status(200).send(searchResult)*/
+        
     })
 }
 
@@ -137,22 +128,25 @@ exports.updateLookOutData = (req,res) =>{
             })
         }
         else{
-            data.name   = req.body.name
+            data.name        = req.body.name,
+            data.crimeNumber = req.body.crimeNumber,
+            data.user        = req.profile,
+
             data.images = {
                 front:{
                     originalname:req.files[0].originalname,
                     filename:req.files[0].filename,
-                    path:`http://localhost:3000/api/images/${req.files[0].filename}`  
+                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[0].filename}`  
                 },
                 right:{
                     originalname:req.files[1].originalname,
                     filename:req.files[1].filename,
-                    path:`http://localhost:3000/api/images/${req.files[1].filename}`
+                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[1].filename}`
                 },
                 left:{
-                        originalname:req.files[2].originalname,
-                        filename:req.files[2].filename,
-                        path:`http://localhost:3000/api/images/${req.files[2].filename}`
+                    originalname:req.files[2].originalname,
+                    filename:req.files[2].filename,
+                    path:`https://overwatch-279014.el.r.appspot.com/api/images/${req.files[2].filename}`
                     }
             }
 

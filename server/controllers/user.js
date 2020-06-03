@@ -32,6 +32,39 @@ exports.getUser = (req,res) => {
     return res.json(req.profile);
 }
 
+exports.updatePassword = (req,res) => {
+    const data  = req.profile
+    data.password = req.body.password
+    data.save((err,savedData)=>{
+        if(err){
+            res.status(400).json({
+                error:"Cannot Update Password, Please Try again"
+            })
+        }else{
+            return res.status(200).json({
+                message:"Password Updated Sucessfully"
+            })
+        }
+    })
+}
+ 
+
+exports.updateEmail = (req,res) => {
+    const data  = req.profile
+    data.email = req.body.email
+    data.save((err,savedData)=>{
+        if(err){
+            res.status(400).json({
+                error:"Cannot Update Email, Please Try again"
+            })
+        }else{
+            return res.status(200).json({
+                message:"Email Updated Sucessfully"
+            })
+        }
+    })
+}
+
 
 exports.updateUser = (req,res)=> {
     User.findByIdAndUpdate(
@@ -41,7 +74,7 @@ exports.updateUser = (req,res)=> {
         (err,user)=>{
             if(err){
                 return res.status(400).json({
-                    error:"You are not authorized to update this user"
+                    error:"Cannot Update Profile, Please Try again"
                 })
             }else{
                 return res.status(200).json({
@@ -52,6 +85,7 @@ exports.updateUser = (req,res)=> {
     )
 
 }
+
 
 
 exports.updateUserProfilePic = (req,res) =>{
@@ -66,7 +100,7 @@ exports.updateUserProfilePic = (req,res) =>{
         else
             {
             data.profile = {
-               path:`http://localhost:3000/api/profile/${req.file.filename}`  
+               path:`https://overwatch-279014.el.r.appspot.com/api/profile/${req.file.filename}`  
             }
             data.save((err,savedData)=>{
             if(err){

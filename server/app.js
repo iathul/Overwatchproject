@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 
 // Database Connection 
-mongoose.connect(process.env.CONNECT_DB, { useNewUrlParser: true, useUnifiedTopology: true }, 
+mongoose.connect(process.env.db, { useNewUrlParser: true, useUnifiedTopology: true }, 
     (err) => {
         if(err){
             console.log(err);
