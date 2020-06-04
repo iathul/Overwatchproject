@@ -1,1 +1,43 @@
-<p>updatelookoutdata works!</p>
+<div class="bg-img">
+	<form (ngSubmit)="submit()">
+		<div class="frame">
+			<div class="center"> 
+				<div class="title">
+					<h1> <i class="fas fa-binoculars"></i> Update Culprit Details <i class="fas fa-binoculars"></i></h1>
+				</div>
+				<div class="input-group">
+					<input type="text" 
+					name="name" 
+					[(ngModel)]="name"
+					class="form-control" 
+					placeholder="Name">
+				  </div>
+
+				  <div class="input-group">
+					<input type="text" 
+					name="crimeNumber" 
+					[(ngModel)]="crimeNumber"
+					class="form-control"    
+					placeholder="Crime Number">
+				  </div>
+		
+				<div class="dropzone">
+					<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+					<input type="file"
+					name="image"
+					multiple
+					(change)="onFileChange($event)"
+					 class="upload-input" />
+				</div>
+		
+				<button type="submit" class="btn" name="uploadbutton"> Update </button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+

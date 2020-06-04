@@ -61,8 +61,8 @@
                 Hi, {{userName}}
             </a>
             <div class="dropdown-menu">
-              <a class="nav-link" *ngIf = "auth.loggedIn()" routerLink="/profile" routerLinkActive="active"> <i class="fas fa-user"></i> Profile </a>
-              <a class="nav-link" style = "cursor:pointer;" *ngIf ="auth.loggedIn()" (click)="auth.logoutUser()">  <i class="fas fa-sign-out-alt"></i> Logout </a>
+              <a class="nav-link" style = "cursor:pointer;" *ngIf = "auth.loggedIn()" (click)="viewProfile()"> <i class="fas fa-user"></i> Profile </a>
+              <a class="nav-link" style = "cursor:pointer;" *ngIf = "auth.loggedIn()" (click)="auth.logoutUser()">  <i class="fas fa-sign-out-alt"></i> Logout </a>
             </div>
           </li>
       </ul>

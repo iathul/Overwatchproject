@@ -21,6 +21,11 @@ export class LookoutService {
    return this.http.get<any>(`${this.serverAdd}/getalldata`)
   }
 
+  getLookOutData(id){
+    this._id = this.auth.getUserId()
+    return this.http.get<any>(`${this.serverAdd}/getdata/${id}/${this._id}`)
+  }
+
   searchCulprit(user){
     this._id = this.auth.getUserId()
     return this.http.post<any>(`${this.serverAdd}/search/${this._id}`,user)

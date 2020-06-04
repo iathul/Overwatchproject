@@ -10,7 +10,6 @@
           <p id="state" class="state"> {{designation}}  </p>
           <span id="country" class="country"> </span>
         </div>
-  
       </div>
       <!--<div class="profile-option">
         <div class="notification">
@@ -18,7 +17,6 @@
           <span class="alert-message">3</span>
         </div>
       </div>-->
-      
     </div>
    
     <div class="main-bd">
@@ -37,29 +35,18 @@
           </div>
          
           <div class="user-bio">
-            <!--<h3>Bio</h3>
-            <p class="bio">
-              Lorem ipsum dolor sit amet, hello how consectetur adipisicing elit. Sint consectetur provident magni yohoho consequuntur, voluptatibus ghdfff exercitationem at quis similique. Optio, amet!
-            </p>-->
+            
           </div>
           <div class="profile-btn">
             <button class="chatbtn" id="chatBtn" (click)="updateProfile()"><i class="fas fa-pen-square"></i> Edit Profile </button>
             <button class="chatbtn" id="chatBtn" (click)=" updateUserData()" > <i class="fas fa-user-cog"></i> Settings </button>
-            <!--<button class="createbtn" id="Create-post"><i class="fa fa-plus"></i> Create</button>-->
           </div>
-         
         </div>
   
       </div>
       <div class="right-side">
   
-        <!--<div class="nav">
-          <ul>
-            <li onclick="tabs(0)" class="user-post active">Posts</li>
-            <li onclick="tabs(1)" class="user-review">Reviews</li>
-            <li onclick="tabs(2)" class="user-setting"> Settings</li>
-          </ul>
-        </div>-->
+       
         <div class="profile-body">
           <div class="lookout-title">
             <h2> Manage Culprit Data </h2>
@@ -80,7 +67,7 @@
                           <p class="card-text"> Crime No: {{data.crimeNumber}} </p>
                           <div class="row">
                             <div class="col-9">
-                              <!--<button title="Update" class="btn float-right  btn-primary" > <i class="fas fa-pen-square"></i> </button>-->
+                              <button title="Update" class="btn float-right  btn-primary" (click)="updateLookOutData(data)"> <i class="fas fa-pen-square"></i> </button>
                             </div>
                             <div class="col-3">
                               <button title="Delete" class="btn float-right btn-danger" (click)="deleteLookOutData(data)" > <i class="fas fa-trash"></i> </button>

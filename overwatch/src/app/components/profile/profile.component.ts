@@ -7,6 +7,7 @@ import { AuthService } from '../../service/auth.service'
 import { UserService } from '../../service/user/user.service'
 import { UpdateprofileComponent } from '../updateprofile/updateprofile.component'
 import { UpdateuserdataComponent } from '../updateuserdata/updateuserdata.component'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-profile',
@@ -35,7 +36,8 @@ export class ProfileComponent implements OnInit {
             private notify:NotificationService,
             private auth: AuthService,
             public dialog: MatDialog,
-            private user : UserService
+            private user : UserService,
+            public router : Router
   ) { }
 
   ngOnInit () {
@@ -108,6 +110,10 @@ export class ProfileComponent implements OnInit {
 
   updateUserData(){
     this.dialog.open(UpdateuserdataComponent);
+  }
+
+  updateLookOutData(data){
+    this.router.navigate(['/updatelookoutdata',data._id])
   }
 
 }

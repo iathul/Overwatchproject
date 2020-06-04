@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router'
 import { NotificationService } from '../../service/utility/notification.service'
 import { AuthService } from '../../service/auth.service'
+import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-uploadimages',
@@ -16,6 +17,8 @@ export class UploadimagesComponent implements OnInit {
   public crimeNumber =""
   message:any
   id:any
+  private serverAdd =`${environment.serverAdd}`
+
   constructor(
               private http:HttpClient, 
               private notify:NotificationService,
@@ -42,7 +45,7 @@ export class UploadimagesComponent implements OnInit {
     for(var i = 0;i<this.selectedFile.length;i++){
       fd.append('image',this.selectedFile[i])
     }
-    this.http.post(`http://localhost:3000/api/create/${this.id}`,fd)
+    this.http.post(`${this.serverAdd}/create/${this.id}`,fd)
     .subscribe(res => {
       this.message = res
       localStorage.setItem('culpritId',this.message.culpritId)

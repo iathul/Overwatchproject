@@ -8,6 +8,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { ProfileComponent } from './components/profile/profile.component'
 import { HomeComponent } from './components/home/home.component';
 import { SearchculpritComponent } from './components/searchculprit/searchculprit.component'
+import { UpdatelookoutdataComponent } from './components/updatelookoutdata/updatelookoutdata.component'
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component'
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
     component:UploadimagesComponent,
     canActivate:[AuthGuard]
   },
+  {
+    path:'updatelookoutdata/:id',
+    component:UpdatelookoutdataComponent
+  },
   { path: 'search', 
     component:SearchculpritComponent,
     canActivate:[AuthGuard] 
@@ -27,7 +32,7 @@ const routes: Routes = [
     component:GalleryComponent,
     canActivate:[AuthGuard]
   },
-  { path :'profile',
+  { path :'profile/:id',
     component:ProfileComponent,
     canActivate:[AuthGuard]
   },
