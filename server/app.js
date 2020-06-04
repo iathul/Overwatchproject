@@ -31,8 +31,6 @@ app.use('/api', lookoutRoute);
 app.use('/api/images', express.static('upload/images')); 
 app.use('/api/profile',express.static('upload/images/profile'));
 
-
-
 app.get('/',(req,res)=>{
     res.send("Hello from overwatch server");
 })

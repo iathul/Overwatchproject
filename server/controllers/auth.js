@@ -34,9 +34,6 @@ exports.register  = async (req,res)=> {
             return res.status(200).json({
                 message:"Account Created"
             })
-            /*const token = jwt.sign({ _id: user._id },process.env.TOKEN_SECRET);
-            const {_id,name,email} = user;
-            return res.json({token,user:{_id,name,email,}}); */
         } 
        
     })
