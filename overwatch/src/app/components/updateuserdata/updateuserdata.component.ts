@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user/user.service'
 import { AuthService } from '../../service/auth.service'
 import { NotificationService } from '../../service/utility/notification.service'
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-updateuserdata',
@@ -17,10 +18,12 @@ export class UpdateuserdataComponent implements OnInit {
     email:""
   }
   userPassword:any ={}
+  validate:  FormGroup;
   constructor( 
               private auth: AuthService,  
               private user : UserService, 
-              private notify:NotificationService
+              private notify:NotificationService,
+              private fb:FormBuilder
             ) { }
 
   ngOnInit(): void {
@@ -32,7 +35,30 @@ export class UpdateuserdataComponent implements OnInit {
         this.userEmail.email = res.email
       }
     )
+
+
+    this.validate = this.fb.group({
+      
+      password: ([null, Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])|(?=.*[$@$!%*?&])')
+        ])]),
+    })
+
   }  
+
+  validateMsg = {
+    
+    
+    password: [
+      { type: 'required',  message: 'Password is required.' },
+      { type: 'minlength', message: 'Must be at least 8 characters long.' },
+      { type: 'pattern',  
+        message: 'Must contain  one uppercase, one lowercase,one special Character, and one number.' }
+    ]
+    
+  }
 
   updateEmail(){
     this.user.updateEmail(this.userEmail).subscribe(

@@ -14,11 +14,17 @@
                 </form>
             </mat-tab>
             <mat-tab label="Password">
-                <form (ngSubmit)="updatePassword()">
-                    <mat-form-field>
+                <form #form="ngForm" [formGroup]="validate" (ngSubmit)="updatePassword()">
+                     <mat-form-field>
                         <mat-label> New Password </mat-label>
-                        <input matInput type="password" [(ngModel)]="userPassword.password" name="password">
+                        <input matInput type="password" formControlName="password" [(ngModel)]="userPassword.password" name="password">
                       </mat-form-field> 
+                      <ng-container *ngFor="let validation of validateMsg.password">
+                        <div class="error-message" *ngIf="validate.get('password').hasError(validation.type) && 
+                          (validate.get('password').dirty || validate.get('password').touched)">
+                          <i class="fas fa-exclamation"></i> {{ validation.message }}
+                        </div>
+                     </ng-container>
                       <mat-dialog-actions>
                         <button class="btn btn-primary" mat-raised-button> Update Password </button>
                      </mat-dialog-actions>  
