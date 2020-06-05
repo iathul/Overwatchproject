@@ -5,6 +5,8 @@ import { AuthService } from '../../service/auth.service'
 import { NotificationService } from '../../service/utility/notification.service'
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment'
+import { MatDialog } from '@angular/material'
+import { AlertComponent } from '../alert/alert.component'
 
 @Component({
   selector: 'app-updatelookoutdata',
@@ -17,7 +19,8 @@ export class UpdatelookoutdataComponent implements OnInit {
                private lookout:LookoutService,
                private auth:AuthService,
                private notify:NotificationService,
-               private http:HttpClient) { }
+               private http:HttpClient,
+               private dialog:MatDialog) { }
 
   id:any
   selectedFile = []
@@ -28,6 +31,9 @@ export class UpdatelookoutdataComponent implements OnInit {
   private serverAdd =`${environment.serverAdd}`
 
   ngOnInit(): void {
+
+    this.dialog.open(AlertComponent)
+
     this.id = this.route.snapshot.paramMap.get('id')
 
     this.lookout.getLookOutData(this.id).subscribe(

@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component'
 import { TokenInterceptorService} from './service/token-interceptor/token-interceptor.service'
 import { UpdateuserdataComponent } from './components/updateuserdata/updateuserdata.component'
+import { AlertComponent } from './components/alert/alert.component'
 
 
 
@@ -20,7 +21,7 @@ import { UpdateuserdataComponent } from './components/updateuserdata/updateuserd
   declarations: [
     AppComponent,
    ],
-   entryComponents:[UpdateprofileComponent,UpdateuserdataComponent],
+   entryComponents:[UpdateprofileComponent,UpdateuserdataComponent,AlertComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

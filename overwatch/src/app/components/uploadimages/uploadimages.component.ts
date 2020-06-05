@@ -4,6 +4,9 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router'
 import { NotificationService } from '../../service/utility/notification.service'
 import { AuthService } from '../../service/auth.service'
 import { environment } from '../../../environments/environment'
+import { MatDialog } from '@angular/material'
+import { AlertComponent } from '../alert/alert.component'
+
 
 @Component({
   selector: 'app-uploadimages',
@@ -24,13 +27,17 @@ export class UploadimagesComponent implements OnInit {
               private notify:NotificationService,
               private route:ActivatedRoute,
               private router:Router,
-              private auth: AuthService
+              private auth: AuthService,
+              private dialog:MatDialog
               ) { }
 
   ngOnInit() {
+  
     this.id = this.auth.getUserId()
-}
 
+    this.dialog.open(AlertComponent)
+ }
+  
   onFileChange(event){
     for(var i = 0;i<event.target.files.length;i++){
       this.selectedFile.push(event.target.files[i])

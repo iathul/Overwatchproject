@@ -62,9 +62,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName',res.user.name)
         this.router.navigate(['/createlookoutdata'],); 
         this.notify.showSucess('Login Sucessfull','Sucess')
-        setTimeout(()=>{
-          window.location.reload()
-        },500)
       },
       
       error => {

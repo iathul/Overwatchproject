@@ -13,6 +13,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { UpdatelookoutdataComponent } from './updatelookoutdata/updatelookoutdata.component';
 import { UpdateuserdataComponent } from './updateuserdata/updateuserdata.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { UpdateuserdataComponent } from './updateuserdata/updateuserdata.compone
     UploadimagesComponent, 
     GalleryComponent, 
     ProfileComponent, 
-    HomeComponent, SearchculpritComponent, PagenotfoundComponent, UpdateprofileComponent, UpdatelookoutdataComponent, UpdateuserdataComponent, 
+    HomeComponent, SearchculpritComponent, PagenotfoundComponent, UpdateprofileComponent, UpdatelookoutdataComponent, UpdateuserdataComponent, AlertComponent, 
   ],
   imports: [ CommonModule,MaterialModule, FormsModule,ReactiveFormsModule,],
   

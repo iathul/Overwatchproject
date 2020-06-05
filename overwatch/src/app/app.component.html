@@ -57,8 +57,8 @@
           <a class="nav-link"  *ngIf ="!auth.loggedIn()" routerLink="/register" routerLinkActive="active"> Register </a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" *ngIf = "auth.loggedIn()" href="#" id="navbardrop" data-toggle="dropdown">
-              <i class="far fa-user"></i>
-                Hi, {{userName}}
+                <i class="far fa-user"></i>
+                Hi, {{auth.getUserName()}}
             </a>
             <div class="dropdown-menu">
               <a class="nav-link" style = "cursor:pointer;" *ngIf = "auth.loggedIn()" (click)="viewProfile()"> <i class="fas fa-user"></i> Profile </a>
