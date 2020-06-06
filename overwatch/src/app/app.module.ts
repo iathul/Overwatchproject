@@ -36,7 +36,8 @@ import { AlertComponent } from './components/alert/alert.component'
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       closeButton:true
-    }) 
+    }),
+    
 
   ],
   providers: [AuthService,AuthGuard,{

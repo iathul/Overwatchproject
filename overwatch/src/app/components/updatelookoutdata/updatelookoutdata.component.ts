@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { LookoutService  } from '../../service/lookout/lookout.service'
 import { AuthService } from '../../service/auth.service'
 import { NotificationService } from '../../service/utility/notification.service'
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpEventType } from '@angular/common/http';
 import { environment } from '../../../environments/environment'
 import { MatDialog } from '@angular/material'
 import { AlertComponent } from '../alert/alert.component'
@@ -28,6 +28,10 @@ export class UpdatelookoutdataComponent implements OnInit {
   public crimeNumber =""
   _id:any
   message:any
+  isFile:boolean = false
+  isProgress:boolean  = false
+  validateMsg:boolean = false
+  progressPercent:any
   private serverAdd =`${environment.serverAdd}`
 
   ngOnInit(): void {
@@ -51,6 +55,11 @@ export class UpdatelookoutdataComponent implements OnInit {
     for(var i = 0;i<event.target.files.length;i++){
       this.selectedFile.push(event.target.files[i])
     }
+    if(this.selectedFile.length == 3){
+      this.isFile = true
+    }else{
+      this.validateMsg = true
+    }
   }
 
 
@@ -61,16 +70,36 @@ export class UpdatelookoutdataComponent implements OnInit {
     for(var i = 0;i<this.selectedFile.length;i++){
       fd.append('image',this.selectedFile[i])
     }
-    this.http.put(`${this.serverAdd}/updatedata/${this.id}/${this._id}`,fd)
-    .subscribe(res => {
+    this.http.put(`${this.serverAdd}/updatedata/${this.id}/${this._id}`,fd,{
+      reportProgress:true,
+      observe: 'events'
+    })
+  
+    /*.subscribe(res => {
+      console.log(res)
       this.message = res
+      localStorage.setItem('culpritId',this.message.culpritId)
+      
       this.notify.showSucess(this.message.message,'Success')
     },err=>{
       if(err){
-        console.log(err)
         this.notify.showError('Something went wrong','Error')
       }
-    })       
+    }) */    
+    
+    .subscribe(event=>{
+      if(event.type === HttpEventType.UploadProgress){
+        this.isProgress = true
+        this.progressPercent = Math.round(event.loaded/event.total*100)
+      }else if(event.type === HttpEventType.Response){
+        this.message = event.body
+        this.notify.showSucess(this.message.message,'Success')
+      }
+    },err=>{
+      if(err){
+        this.notify.showError('Something went wrong, Please Try again','Sorry')
+      }
+    })
   }
 
 }

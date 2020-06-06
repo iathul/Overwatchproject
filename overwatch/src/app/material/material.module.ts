@@ -4,6 +4,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 const MaterialComponents = [
@@ -13,7 +14,8 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatInputModule,
   MatDialogModule,
-  MatTabsModule
+  MatTabsModule,
+  MatProgressBarModule
 ]
 
 @NgModule({

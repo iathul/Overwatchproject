@@ -8,6 +8,7 @@
 				<div class="input-group">
 					<input type="text" 
 					name="name" 
+					ngModel required
 					[(ngModel)]="name"
 					class="form-control" 
 					placeholder="Name">
@@ -16,6 +17,7 @@
 				  <div class="input-group">
 					<input type="text" 
 					name="crimeNumber" 
+					ngModel required
 					[(ngModel)]="crimeNumber"
 					class="form-control"    
 					placeholder="Crime Number">
@@ -29,8 +31,9 @@
 					(change)="onFileChange($event)"
 					 class="upload-input" />
 				</div>
-		
-				<button type="submit" class="btn" name="uploadbutton"> Update </button>
+				<h6 *ngIf="validateMsg"> Minimum Three Images Required </h6>
+				<mat-progress-bar *ngIf="isProgress" mode="determinate" value="{{progressPercent}}"></mat-progress-bar>
+				<button *ngIf="isFile" type="submit" class="btn" name="uploadbutton"> Update </button>
 			</div>
 		</div>
 	</form>
