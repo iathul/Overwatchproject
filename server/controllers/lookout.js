@@ -75,6 +75,7 @@ exports.createLookOutData = (req,res)=>{
     })
 }
 
+
 exports.getLookOutData = (req,res)=>{
     return res.json(req.lookOutData);
 }
