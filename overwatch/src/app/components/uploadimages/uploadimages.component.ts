@@ -78,7 +78,7 @@ export class UploadimagesComponent implements OnInit {
     .subscribe(event=>{
       if(event.type === HttpEventType.UploadProgress){
         this.isProgress = true
-        this.progressPercent = Math.round(event.loaded/event.total*100)
+        this.progressPercent = Math.round(event.loaded/event.total)*100
       }else if(event.type === HttpEventType.Response){
         this.message = event.body
         this.notify.showSucess(this.message.message,'Success')

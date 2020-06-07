@@ -1,9 +1,10 @@
 const Lookout = require('../models/lookout');
 const multer  = require('multer');
 const path    = require('path');
+const fs = require("fs")
 
 const storage = multer.diskStorage({
-    destination:'./upload/images',
+    destination:'/home/athul/Overwatch/images',
     filename:(req,file,cb) => {
         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
@@ -110,10 +111,29 @@ exports.deleteLookOutData = (req,res) =>{
     data.remove((err, deletedData)=>{
         if(err){
             return res.status(400).json({
-                error:"Failed to delete the product"
+                error:"Failed to delete"
             })
         }
+        
         res.json({ message:"Successfully deleted" })
+        let front = deletedData.images.front.filename
+        let right = deletedData.images.right.filename
+        let left  = deletedData.images.left.filename
+        fs.unlink(`/home/athul/Overwatch/images/${front}`,(err)=>{
+            if(err){
+                console.log(err)
+            }
+        })
+        fs.unlink(`/home/athul/Overwatch/images/${right}`,(err)=>{
+            if(err){
+                console.log(err)
+            }
+        })
+        fs.unlink(`/home/athul/Overwatch/images/${left}`,(err)=>{
+            if(err){
+                console.log(err)
+            }
+        })
         
         
     })

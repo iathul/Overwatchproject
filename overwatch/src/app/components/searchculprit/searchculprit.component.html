@@ -44,7 +44,7 @@
                                     <div class="card-body">
                                         <p class="card-text"> Culprit Name : {{searchResult.name}} </p>
                                         <p class="card-text"> Crime No: {{searchResult.crimeNumber}} </p>
-                                        <a href="#" class="btn float-right btn-primary"> Find On CCTV </a>
+                                        <button class="btn float-right btn-primary" (click)="find(searchResult)" > Find On CCTV </button>
                                       </div>
                                 </div>
                             </div>

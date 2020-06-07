@@ -28,7 +28,7 @@ mongoose.connect(process.env.db , { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api', authRoute);
 app.use('/api', userRoute)
 app.use('/api', lookoutRoute);
-app.use('/api/images', express.static('upload/images')); 
+app.use('/api/images', express.static('/home/athul/Overwatch/images')); 
 app.use('/api/profile',express.static('upload/images/profile'));
 
 app.get('/',(req,res)=>{
