@@ -37,8 +37,10 @@ export class LookoutService {
   }
 
   findOnCamera(path){
-    console.log(path)
+    //console.log(path)
     //return this.http.post<any>(`${this.serverAdd}/test`,path)
+    return this.http.post<any>('http://localhost:5000/foo',path)  
+    
     
   }
 }
