@@ -12,11 +12,10 @@ export class AppComponent  {
 constructor(public auth: AuthService, private router:Router){}
   
 
-  public userName = this.auth.getUserName();
-  public _id = this.auth.getUserId()
+  
 
   viewProfile(){
-    this.router.navigate(['/profile',this._id])
+    this.router.navigate(['/profile',this.auth.getUserId()])
   }
 
 }

@@ -32,7 +32,7 @@ import { AlertComponent } from './components/alert/alert.component'
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      timeOut: 5000,
+      timeOut: 2500,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       closeButton:true
