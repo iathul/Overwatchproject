@@ -171,7 +171,4 @@ exports.updateLookOutData = (req,res) =>{
     
 }
 
-// exports.test = (req,res)=>{
-//     let data = req.body
-//     res.status(200).json(data)
-// }
+
