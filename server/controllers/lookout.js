@@ -4,7 +4,7 @@ const path    = require('path');
 const fs = require("fs")
 
 const storage = multer.diskStorage({
-    destination:'/home/athul/Overwatch/images',
+    destination:'./upload/images',
     filename:(req,file,cb) => {
         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
@@ -27,55 +27,40 @@ exports.getLookOutDataById = (req,res,next,id)=>{
 
 
 exports.createLookOutData = (req,res)=>{
-   
-    upload(req,res,(err)=>{
-        if(err){
-            return res.status(400).json({
-                error:"Cannot Upload Try again"
-            })
+   upload(req,res,(err)=>{
+        if(err){    return res.status(400).json({   error:"Cannot Upload Try again" })
         }
-        else{
-            
-            const newData = new Lookout({
+        else{   const newData = new Lookout({
                 name        :req.body.name,
                 crimeNumber :req.body.crimeNumber,
                 user        :req.profile,
                 images:
                 {
-                    front:{
-                        originalname:req.files[0].originalname,
-                        filename:req.files[0].filename,
-                        path:`http://localhost:3000/api/images/${req.files[0].filename}`  
+                    front:{ originalname:req.files[0].originalname,
+                            filename:req.files[0].filename,
+                            path:`http://localhost:3000/api/images/${req.files[0].filename}`  
                     },
-                    right:{
-                        originalname:req.files[1].originalname,
-                        filename:req.files[1].filename,
-                        path:`http://localhost:3000/api/images/${req.files[1].filename}`
+                    right:{ originalname:req.files[1].originalname,
+                            filename:req.files[1].filename,
+                            path:`http://localhost:3000/api/images/${req.files[1].filename}`
                     },
-                    left:{
-                        originalname:req.files[2].originalname,
-                        filename:req.files[2].filename,
-                        path:`http://localhost:3000/api/images/${req.files[2].filename}`
+                    left:{  originalname:req.files[2].originalname,
+                            filename:req.files[2].filename,
+                            path:`http://localhost:3000/api/images/${req.files[2].filename}`
                     }
-                }
-
-            })
+                }})
             newData.save((err,savedData)=>{
                 if(err){
-                    res.status(400).json({
-                        error:"Cannot Add Details Please Try Again"
-                    })
+                    res.status(400).json({  error:"Cannot Add Details Please Try Again" })
                 }else{
                     res.status(200).json({
                         culpritId:savedData._id,
                         message:"Successfully Uploaded"
-                    })
-                }
-            })
-        }
+                    })}
+                })
+            }
     })
 }
-
 
 exports.getLookOutData = (req,res)=>{
     return res.json(req.lookOutData);
@@ -119,17 +104,17 @@ exports.deleteLookOutData = (req,res) =>{
         let front = deletedData.images.front.filename
         let right = deletedData.images.right.filename
         let left  = deletedData.images.left.filename
-        fs.unlink(`/home/athul/Overwatch/images/${front}`,(err)=>{
+        fs.unlink(`./upload/images/${front}`,(err)=>{
             if(err){
                 console.log(err)
             }
         })
-        fs.unlink(`/home/athul/Overwatch/images/${right}`,(err)=>{
+        fs.unlink(`./upload/images/${right}`,(err)=>{
             if(err){
                 console.log(err)
             }
         })
-        fs.unlink(`/home/athul/Overwatch/images/${left}`,(err)=>{
+        fs.unlink(`./upload/images/${left}`,(err)=>{
             if(err){
                 console.log(err)
             }
@@ -186,4 +171,7 @@ exports.updateLookOutData = (req,res) =>{
     
 }
 
-
+// exports.test = (req,res)=>{
+//     let data = req.body
+//     res.status(200).json(data)
+// }

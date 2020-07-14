@@ -25,4 +25,5 @@ router.put('/updatedata/:lookoutDataId/:userId', isSignedIn, isAuthenticated, up
 router.delete('/deletedata/:lookoutDataId/:userId',isSignedIn,isAuthenticated,deleteLookOutData);
 
 
+
 module.exports = router;
